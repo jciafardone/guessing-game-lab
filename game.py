@@ -70,4 +70,37 @@ def number_guessing_game():
 
 
 
-number_guessing_game()
+def computer_playing():
+    secret_number = int(input("Choose a number between 1 and 20: "))
+    print("I'm the computer. I'm going to guess a number.")
+    # computer_guess = random.randint(1,21)
+    min_parameter = 1
+    max_parameter = 20
+
+    computer_guess_attempts = []
+
+    while True:
+        computer_guess = random.randint(min_parameter, max_parameter)
+        print(f"My guess is {computer_guess}.")
+        next_guess = input("Was the computer too high, too low, or correct? ").lower()
+        # if next_guess != "too high" or next_guess != "too low" or next_guess != "correct":
+        #     print("Invalid answer.")
+        if computer_guess not in computer_guess_attempts:
+            print(next_guess)
+            if next_guess == "too low":
+                computer_guess_attempts.append(computer_guess)
+                min_parameter = computer_guess
+            elif next_guess == "too high":
+                computer_guess_attempts.append(computer_guess)
+                max_parameter = computer_guess
+            elif next_guess == "correct":
+                print("You won!")
+                break
+        # elif next_guess != "too high" or next_guess != "too low" or next_guess != "correct":
+        # else:
+        #     continue
+
+#try, except, ValueError
+
+computer_playing()
+#number_guessing_game()
